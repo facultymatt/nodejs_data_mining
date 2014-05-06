@@ -17,7 +17,9 @@
     "passport": "~0.2.0",
     "passport-local": "~0.1.6",
     "ejs": "~0.8.4",
-    "github": "^0.1.16"
+    "github": "^0.1.16",
+    "octonode": "^0.6.2",
+    "async": "^0.8.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
