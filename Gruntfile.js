@@ -55,7 +55,7 @@ module.exports = function (grunt) {
         }
       },
       mochaTest: {
-        files: ['test/server/{,*/}*.js'],
+        files: ['test/server/**/*.js', 'lib/**/*.js'],
         tasks: ['env:test', 'mochaTest']
       },
       // jsTest: {
@@ -437,7 +437,8 @@ module.exports = function (grunt) {
 
     mochaTest: {
       options: {
-        reporter: 'spec'
+        reporter: 'spec',
+        growl: true
       },
       src: ['test/server/**/*.js']
     },
