@@ -3,7 +3,7 @@
 var expect = require('expect.js'),
   express = require('express'),
   nock = require('nock'),
-  mocks = require('../ofxaddons/repoContentsMock.js'),
+  mocks = require('../ofxaddons/githubRepoDetailMock.js'),
   ofxGithub = require('../../../lib/ofxaddons/index.js');
 
 
@@ -132,12 +132,12 @@ describe('--> parsing file contents', function() {
       };
 
       parsedContents = {
-        full_name: "lame/addon",
-        has_makefile: false,
-        has_thumbnail: false,
-        has_readme: false,
-        has_changelog: false,
-        num_examples: 0
+        fullName: "lame/addon",
+        hasMakefile: false,
+        hasThumbnail: false,
+        hasReadme: false,
+        hasChangelog: false,
+        numExamples: 0
       };
 
       done();
@@ -172,19 +172,19 @@ describe('--> parsing file contents', function() {
       };
 
       parsedContents = {
-        full_name: "admsyn/ofxAudioUnit",
-        has_makefile: true,
-        has_thumbnail: true,
-        has_readme: true,
-        has_changelog: true,
-        num_examples: 5
+        fullName: "admsyn/ofxAudioUnit",
+        hasMakefile: true,
+        hasThumbnail: true,
+        hasReadme: true,
+        hasChangelog: true,
+        numExamples: 5
       };
 
       done();
 
     });
 
-    it('should return default object', function(done) {
+    it('should set properties based on files found', function(done) {
 
       ofxGithub.getDetailsForRepoArrayAsync(addon, function(repoWithDetails) {
         expect(repoWithDetails[0]).to.eql(parsedContents);
@@ -210,19 +210,19 @@ describe('--> parsing file contents', function() {
       };
 
       parsedContents = {
-        full_name: "alt/makefile",
-        has_makefile: true,
-        has_thumbnail: false,
-        has_readme: false,
-        has_changelog: false,
-        num_examples: 0
+        fullName: "alt/makefile",
+        hasMakefile: true,
+        hasThumbnail: false,
+        hasReadme: false,
+        hasChangelog: false,
+        numExamples: 0
       };
 
       done();
 
     });
 
-    it('should return default object', function(done) {
+    it('should detect alternate pattern for makefile', function(done) {
 
       ofxGithub.getDetailsForRepoArrayAsync(addon, function(repoWithDetails) {
         expect(repoWithDetails[0]).to.eql(parsedContents);
