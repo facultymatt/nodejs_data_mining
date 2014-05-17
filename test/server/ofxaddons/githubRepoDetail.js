@@ -132,7 +132,7 @@ describe('parsing file contents', function() {
       };
 
       parsedContents = {
-        fullName: "lame/addon",
+        full_name: "lame/addon",
         hasMakefile: false,
         hasThumbnail: false,
         hasReadme: false,
@@ -172,7 +172,7 @@ describe('parsing file contents', function() {
       };
 
       parsedContents = {
-        fullName: "admsyn/ofxAudioUnit",
+        full_name: "admsyn/ofxAudioUnit",
         hasMakefile: true,
         hasThumbnail: true,
         hasReadme: true,
@@ -210,7 +210,7 @@ describe('parsing file contents', function() {
       };
 
       parsedContents = {
-        fullName: "alt/makefile",
+        full_name: "alt/makefile",
         hasMakefile: true,
         hasThumbnail: false,
         hasReadme: false,

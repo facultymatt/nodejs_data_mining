@@ -16,7 +16,7 @@ describe('Parse repo contents', function() {
       name: 'addon_config.mk'
     }];
 
-    gitParse(null, files, function(result) {
+    gitParse(files, function(result) {
       expect(result.hasMakefile).to.be(true);
       done();
     });
@@ -29,7 +29,7 @@ describe('Parse repo contents', function() {
       name: 'addon.make'
     }];
 
-    gitParse(null, files, function(result) {
+    gitParse(files, function(result) {
       expect(result.hasMakefile).to.be(true);
       done();
     });
@@ -42,7 +42,7 @@ describe('Parse repo contents', function() {
       name: 'readme.md'
     }];
 
-    gitParse(null, files, function(result) {
+    gitParse(files, function(result) {
       expect(result.hasReadme).to.be(true);
       done();
     });
@@ -55,7 +55,7 @@ describe('Parse repo contents', function() {
       name: 'README.md'
     }];
 
-    gitParse(null, files, function(result) {
+    gitParse(files, function(result) {
       expect(result.hasReadme).to.be(true);
       done();
     });
@@ -74,7 +74,7 @@ describe('Parse repo contents', function() {
       name: 'EXAMPLE4/'
     }];
 
-    gitParse(null, files, function(result) {
+    gitParse(files, function(result) {
       expect(result.numExamples).to.be(4);
       done();
     });
@@ -87,7 +87,7 @@ describe('Parse repo contents', function() {
       name: 'CHANGELOG.md'
     }];
 
-    gitParse(null, files, function(result) {
+    gitParse(files, function(result) {
       expect(result.hasChangelog).to.be(true);
       done();
     });
@@ -100,7 +100,7 @@ describe('Parse repo contents', function() {
       name: 'ofxaddons_thumbnail.png'
     }];
 
-    gitParse(null, files, function(result) {
+    gitParse(files, function(result) {
       expect(result.hasThumbnail).to.be(true);
       done();
     });
