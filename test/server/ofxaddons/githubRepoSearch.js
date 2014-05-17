@@ -48,7 +48,7 @@ describe('Searching github', function() {
     // will not call done and thus test will fail
     var failureCb = function(errorObj) {};
 
-    ofxGithub.searchAlphabetAysnc(successCb, failureCb);
+    ofxGithub.searchAlphabetAysnc(successCb, failureCb, 'ab');
 
   });
 
@@ -82,7 +82,7 @@ describe('Searching github', function() {
     // will not call done and thus test will fail
     var failureCb = function(errorObj) {};
 
-    ofxGithub.searchAlphabetAysnc(successCb, failureCb);
+    ofxGithub.searchAlphabetAysnc(successCb, failureCb, 'ab');
   });
 
   it('handles request timeout', function(done) {
@@ -103,7 +103,7 @@ describe('Searching github', function() {
 
     var failureCb = function(errorObj) {};
 
-    ofxGithub.searchAlphabetAysnc(successCb, failureCb);
+    ofxGithub.searchAlphabetAysnc(successCb, failureCb, 'ab');
 
   });
 
@@ -122,7 +122,7 @@ describe('Searching github', function() {
       done();
     };
 
-    ofxGithub.searchAlphabetAysnc(successCb, failureCb);
+    ofxGithub.searchAlphabetAysnc(successCb, failureCb, 'ab');
 
   });
 
