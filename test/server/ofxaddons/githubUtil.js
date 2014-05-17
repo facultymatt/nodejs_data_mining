@@ -106,6 +106,7 @@ describe('Parse repo contents', function() {
     });
 
   });
+
 });
 
 describe('Call after given time', function() {

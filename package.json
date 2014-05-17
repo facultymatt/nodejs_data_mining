@@ -20,7 +20,8 @@
     "github": "^0.1.16",
     "octonode": "^0.6.2",
     "async": "^0.8.0",
-    "nock": "^0.31.0"
+    "nock": "^0.31.0",
+    "mongoose-timestamp": "^0.2.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

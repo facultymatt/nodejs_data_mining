@@ -7,7 +7,7 @@ var expect = require('expect.js'),
   ofxGithub = require('../../../lib/ofxaddons/index.js');
 
 
-describe('--> getting repos contents', function() {
+describe('getting repos contents', function() {
 
   var manyReposArray, singleRepoArray, limitArray, singleRepoObj, scope1, scope2, scope3, scopeLimit;
 
@@ -108,7 +108,7 @@ describe('--> getting repos contents', function() {
 });
 
 
-describe('--> parsing file contents', function() {
+describe('parsing file contents', function() {
 
   var authParams = '&client_id=949b776f9fc88851972e&client_secret=4793f09a0189098c72bcded04945c65d0f3a3001';
 
