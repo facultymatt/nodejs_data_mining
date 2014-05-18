@@ -137,7 +137,8 @@ describe('parsing file contents', function() {
         hasThumbnail: false,
         hasReadme: false,
         hasChangelog: false,
-        numExamples: 0
+        examplesCount: 0,
+        "lastFetchedAt": "2014-05-13T19:03:10.000Z"
       };
 
       done();
@@ -177,7 +178,8 @@ describe('parsing file contents', function() {
         hasThumbnail: true,
         hasReadme: true,
         hasChangelog: true,
-        numExamples: 5
+        examplesCount: 5,
+        "lastFetchedAt": "2014-05-13T19:05:32.000Z"
       };
 
       done();
@@ -215,7 +217,8 @@ describe('parsing file contents', function() {
         hasThumbnail: false,
         hasReadme: false,
         hasChangelog: false,
-        numExamples: 0
+        examplesCount: 0,
+        "lastFetchedAt": "2014-05-13T19:03:10.000Z"
       };
 
       done();

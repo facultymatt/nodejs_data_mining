@@ -25,6 +25,77 @@ exports.details = function() {
       'x-ratelimit-limit': '5000',
       'x-ratelimit-remaining': '4967',
       'x-ratelimit-reset': '1400010913'
+    })
+    .get('/repos/new/addon/contents/?ref=master' + authParams)
+    .reply(200, [{
+      "name": "example-1-hello",
+      "path": "example-1-hello"
+    }, {
+      "name": "example-2-oscilloscope",
+      "path": "example-2-oscilloscope"
+    }, {
+      "name": "changelog.md",
+      "path": "changelog.md"
+    }], {
+      server: 'GitHub.com',
+      date: 'Tue, 13 May 2014 19:05:32 GMT',
+      'content-type': 'application/json; charset=utf-8',
+      status: '200 OK',
+      'x-ratelimit-limit': '5000',
+      'x-ratelimit-remaining': '4967',
+      'x-ratelimit-reset': '1400010913'
+    })
+    .get('/repos/old/1/contents/?ref=master' + authParams)
+    .reply(200, [], {
+      server: 'GitHub.com',
+      date: 'Tue, 13 May 2014 19:05:32 GMT',
+      'content-type': 'application/json; charset=utf-8',
+      status: '200 OK',
+      'x-ratelimit-limit': '5000',
+      'x-ratelimit-remaining': '4967',
+      'x-ratelimit-reset': '1400010913'
+    })
+    .get('/repos/old/2/contents/?ref=master' + authParams)
+    .reply(200, [], {
+      server: 'GitHub.com',
+      date: 'Tue, 13 May 2014 19:05:32 GMT',
+      'content-type': 'application/json; charset=utf-8',
+      status: '200 OK',
+      'x-ratelimit-limit': '5000',
+      'x-ratelimit-remaining': '4967',
+      'x-ratelimit-reset': '1400010913'
+    })
+    .get('/repos/old/3/contents/?ref=master' + authParams)
+    .reply(200, [], {
+      server: 'GitHub.com',
+      date: 'Tue, 13 May 2014 19:05:32 GMT',
+      'content-type': 'application/json; charset=utf-8',
+      status: '200 OK',
+      'x-ratelimit-limit': '5000',
+      'x-ratelimit-remaining': '4967',
+      'x-ratelimit-reset': '1400010913'
+    })
+    .get('/repos/cool/addon/contents/?ref=master' + authParams)
+    .reply(200, [{
+      "name": "example-1-hello",
+      "path": "example-1-hello"
+    }, {
+      "name": "example-2-oscilloscope",
+      "path": "example-2-oscilloscope"
+    }, {
+      "name": "example-3-busses",
+      "path": "example-3-busses"
+    }, {
+      "name": "example-4-parameters",
+      "path": "example-4-parameters"
+    }], {
+      server: 'GitHub.com',
+      date: 'Tue, 13 May 2014 19:05:32 GMT',
+      'content-type': 'application/json; charset=utf-8',
+      status: '200 OK',
+      'x-ratelimit-limit': '5000',
+      'x-ratelimit-remaining': '4967',
+      'x-ratelimit-reset': '1400010913'
     });
 };
 

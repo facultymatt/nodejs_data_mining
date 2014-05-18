@@ -7,7 +7,7 @@ var should = require('should'),
   Stat = mongoose.model('Stat'),
   Addon = mongoose.model('Addon');
 
-var addon, mockSearch, mockSearchAndFindNew, mockDetails;
+var addon, mockSearch, mockSearchAndFindNew, mockDetails, serach, details;
 
 describe('processing addons', function() {
 
@@ -22,6 +22,7 @@ describe('processing addons', function() {
     });
 
     search = mocks.searchAndFindNew();
+    details = mocks.details();
 
   });
 
@@ -85,7 +86,6 @@ describe('processing addons', function() {
       // the first addon should be updated with the new number of stars
       var successCb = function() {
         Stat.find({}).exec(function(err, allStats) {
-          console.log(allStats);
           expect(allStats[0].newRepos).to.be(1);
           expect(allStats[0].updatedRepos).to.be(1);
           done();
@@ -100,31 +100,75 @@ describe('processing addons', function() {
 
   });
 
-  describe('then grabs batch of addons to get details', function() {
+  describe('updates details for addons', function() {
 
-    // var mock = [];
-    // mock.push(new Addon({
-    //   fullName: 'new'
-    // }));
-    // mock.push(new Addon({
-    //   fullName: 'old 10',
-    //   lastFetchedAt: new Date('10 minutes ago')
-    // }));
-    // mock.push(new Addon({
-    //   fullName: 'old 5',
-    //   lastFetchedAt: new Date('5 minutes ago')
-    // }));
-    // mock.push(new Addon({
-    //   fullName: 'old 20',
-    //   lastFetchedAt: new Date('20 minutes ago')
-    // }));
+    it('gets contents for repos', function(done) {
+
+      var successCb = function() {
+        Addon.findOne({
+          fullName: 'cool/addon'
+        }).exec(function(err, theAddon) {
+          expect(theAddon.examplesCount).to.be(4);
+          done();
+        });
+      };
+
+      var failureCb = function() {};
+
+      ofxProcess.searchAddonsAndUpdateDatabase(successCb, failureCb, 'a');
+
+    });
 
 
-    it('grabs limited amount of records', function() {});
+    describe('updates older repos that were not just fetched', function() {
 
-    it('sorts first by lastFetchedAt === null', function() {});
+      beforeEach(function(done) {
+        var mock = [];
+        mock.push(new Addon({
+          fullName: 'new/addon'
+        }));
+        mock.push(new Addon({
+          fullName: 'cool/addon'
+        }));
+        mock.push(new Addon({
+          fullName: 'old/1',
+          lastFetchedAt: new Date('2011-04-11T11:51:00')
+        }));
+        mock.push(new Addon({
+          fullName: 'old/2',
+          lastFetchedAt: new Date('2011-04-11T11:52:00')
+        }));
+        mock.push(new Addon({
+          fullName: 'old/3',
+          lastFetchedAt: new Date('2011-04-11T11:53:00')
+        }));
 
-    it('sorts next by oldest lastFetchedAt', function() {});
+        Addon.create(mock).then(function() {
+          done();
+        });
+      });
+
+      it('sorts first repos with lastFetchedAt === null', function(done) {
+
+        var successCb = function() {
+          Addon.find({fullName: 'old/1'}).exec(function(err, addon) {
+            expect(addon[0].lastFetchedAt).to.be.greaterThan(new Date('2014-01-01T01:00:00'));
+            done();
+          });
+        };
+
+        var failureCb = function() {};
+
+        ofxProcess.searchAddonsAndUpdateDatabase(successCb, failureCb, 'a');
+
+      });
+
+      it('sorts next by oldest lastFetchedAt', function() {});
+
+
+    });
+
+
 
   });
 

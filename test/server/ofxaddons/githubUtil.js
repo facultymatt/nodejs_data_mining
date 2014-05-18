@@ -75,7 +75,7 @@ describe('Parse repo contents', function() {
     }];
 
     gitParse(files, function(result) {
-      expect(result.numExamples).to.be(4);
+      expect(result.examplesCount).to.be(4);
       done();
     });
 
