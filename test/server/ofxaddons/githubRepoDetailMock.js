@@ -48,7 +48,7 @@ exports.altMakeFile = function() {
 exports.requestLimit = function() {
 
   // fake timeout from server by 
-  var timeout = Math.round(+new Date() / 1000) + 1; // adds 1 second
+  var timeout = Math.round(+new Date() / 1000) + 0.001; // adds sliver of time
 
   return nock('https://api.github.com:443')
     .get('/repos/request/limit/contents/?ref=master' + authParams)

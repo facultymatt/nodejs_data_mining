@@ -255,7 +255,7 @@ exports.searchAPage2 = function() {
 exports.searchAPage2Timeout = function() {
 
   // fake timeout from server by 
-  var timeout = Math.round(+new Date() / 1000) + 1; // adds 1 second
+  var timeout = Math.round(+new Date() / 1000) + 0.001; // adds sliver of time
 
   return nock('https://api.github.com:443')
     .get('/search/repositories?page=2&per_page=2' + authParams + '&q=ofxa')
