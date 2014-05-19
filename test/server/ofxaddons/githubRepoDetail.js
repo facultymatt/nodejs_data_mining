@@ -7,7 +7,7 @@ var expect = require('expect.js'),
   ofxGithub = require('../../../lib/ofxaddons/index.js');
 
 
-describe('getting repos contents', function() {
+describe('Fetching repo contents', function() {
 
   var manyReposArray, singleRepoArray, limitArray, singleRepoObj, scope1, scope2, scope3, scopeLimit;
 
@@ -42,9 +42,9 @@ describe('getting repos contents', function() {
     done();
   });
 
-  describe('given array of repo objects with at least full_name property', function() {
+  describe('Array of repo objects with `fullName` or `full_name` property', function() {
 
-    it('will perform async lookup to github for each repo', function(done) {
+    it('batch async lookup to github for each repo', function(done) {
       ofxGithub.getDetailsForRepoArrayAsync(manyReposArray, function(reposWithDetails) {
         expect(reposWithDetails.length).to.be(3);
         scope1.done();
@@ -58,9 +58,9 @@ describe('getting repos contents', function() {
 
   });
 
-  describe('given array of one repo', function() {
+  describe('Array length is 1', function() {
 
-    it('will lookup details for single repo', function(done) {
+    it('batch async lookup', function(done) {
       ofxGithub.getDetailsForRepoArrayAsync(singleRepoArray, function(repoWithDetails) {
         expect(repoWithDetails.length).to.be(1);
         scope3.done();
@@ -72,9 +72,10 @@ describe('getting repos contents', function() {
 
   });
 
-  describe('given a single repo object', function() {
+  // makes sense to have on model ?
+  describe('Single repo object', function() {
 
-    it('will lookup details for single repo object', function(done) {
+    it('single async lookup', function(done) {
 
       ofxGithub.getDetailsForRepoArrayAsync(singleRepoObj, function(repoWithDetails) {
         expect(repoWithDetails.length).to.be(1);
@@ -87,7 +88,7 @@ describe('getting repos contents', function() {
 
   });
 
-  describe('on API rate limit exceeded error from github', function() {
+  describe('In event API rate limit exceeded error from github', function() {
 
     it('should retry after `x-ratelimit-reset` specified in header', function(done) {
 

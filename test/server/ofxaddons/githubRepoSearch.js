@@ -156,7 +156,7 @@ describe('Searching github', function() {
         forkCount: 25,
         githubCreatedAt: '2013-06-11T19:34:23Z',
         githubUpdatedAt: '2014-05-14T07:12:51Z',
-        lastFetchedAt: '2014-05-17T12:48:45.000Z'
+        lastFetchedAt: null
       
       });
 

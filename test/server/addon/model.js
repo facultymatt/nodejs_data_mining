@@ -3,6 +3,8 @@
 var should = require('should'),
   expect = require('expect.js'),
   mongoose = require('mongoose'),
+  nock = require('nock'),
+  modelMocks = require('../addon/addonMock.js'),
   Addon = mongoose.model('Addon');
 
 var addon, template;
@@ -54,7 +56,7 @@ describe('Addon Model', function() {
     done();
   });
 
-  describe('has model property', function() {
+  describe('Model properties', function() {
 
     beforeEach(function(done) {
       addon.save(function() {
@@ -70,7 +72,7 @@ describe('Addon Model', function() {
       expect(addon.fullName).to.eql(template.fullName);
       done();
     });
-    
+
     it('owner.name', function(done) {
       expect(addon.owner.name).to.eql(addon.owner.name);
       done();
@@ -161,6 +163,43 @@ describe('Addon Model', function() {
     it('thumbnailUrl', function(done) {
       expect(addon.thumbnailUrl).to.eql(template.thumbnailUrl);
       done();
+    });
+
+    it('commits', function(done) {
+      expect(addon.commits.length).to.eql(0);
+      done();
+    });
+
+  });
+
+  describe('Model methods', function() {
+
+    var commits;
+
+    describe('fetching commits', function() {
+      
+      beforeEach(function(done) {
+        commits = modelMocks.recentCommits();
+        done();
+      });
+
+      it('fetches commits for ths repo', function(done) {
+        var sucessCb = function() {
+          expect(addon.commits.length).to.be.greaterThan(0);
+          done();
+        };
+        addon.fetchRecentCommits(sucessCb);
+      });
+
+      it('updates lastFetchedAt time', function(done) {
+        var sucessCb = function() {
+          var expectedDate = new Date('Tue, 13 May 2014 19:03:10 GMT');
+          expect(addon.lastFetchedAt).to.eql(expectedDate);
+          done();
+        };
+        addon.fetchRecentCommits(sucessCb);
+      });
+    
     });
 
   });
