@@ -8,6 +8,7 @@ angular.module('ofxSearchApp')
     $cookieStore.remove('user');
 
     console.log('Another log!');
+    console.log('Moar log!');
 
     return {
 
