@@ -48,6 +48,8 @@ angular.module('ofxSearchApp', [
   })
   .run(function ($rootScope, $location, Auth) {
 
+    console.log('Hello!');
+
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$routeChangeStart', function (event, next) {
       
