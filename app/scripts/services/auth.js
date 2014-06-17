@@ -7,6 +7,8 @@ angular.module('ofxSearchApp')
     $rootScope.currentUser = $cookieStore.get('user') || null;
     $cookieStore.remove('user');
 
+    console.log('Another log!');
+
     return {
 
       /**
